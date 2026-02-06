@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Pixel Runner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="app">
+    <!-- HUD -->
+    <header class="hud" id="hud" aria-hidden="true">
+      <div class="hud-left">
+        <div class="badge" id="fighterBadge">Боец: —</div>
+
+        <button class="btn small ghost" id="btnPause" type="button" aria-label="Пауза">⏸</button>
+        <button class="btn small ghost" id="btnMute" type="button" aria-label="Звук">🔊</button>
+      </div>
+
+      <div class="hud-right">
+        <div class="score">
+          <div class="score-label">СЧЁТ</div>
+          <div class="score-value" id="scoreNow">0</div>
+        </div>
+        <div class="score">
+          <div class="score-label">РЕКОРД</div>
+          <div class="score-value" id="scoreBest">0</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MENU -->
+    <main class="menu" id="menu">
+      <div class="panel">
+        <div class="panel-title">PIXEL RUNNER</div>
+        <div class="panel-sub">вдохновлено dino • пиксель-стиль • mobile/pc</div>
+
+        <div class="grid">
+          <button class="btn primary" id="btnStart" type="button">▶ Начать игру</button>
+          <button class="btn" id="btnShowBest" type="button">🏆 Максимальный рекорд</button>
+
+          <div class="select">
+            <div class="select-label">Выбор бойца</div>
+            <div class="fighters" id="fighters"></div>
+          </div>
+
+          <div class="extras">
+            <div class="tip">ПК: <b>Space</b> / <b>↑</b> прыжок, <b>↓</b> присесть, <b>P</b> пауза</div>
+            <div class="tip">Телефон: <b>тап</b> — прыжок, <b>удержание DUCK</b> — присесть</div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <span>Сайт сделал @sinsintheheart</span>
+      </footer>
+    </main>
+
+    <!-- GAME -->
+    <section class="stageWrap" id="stageWrap" aria-hidden="true">
+      <canvas id="game" width="960" height="360"></canvas>
+
+      <div class="touchControls" id="touchControls" aria-hidden="true">
+        <button class="touchBtn" id="touchJump" type="button">JUMP</button>
+        <button class="touchBtn" id="touchDuck" type="button">DUCK</button>
+      </div>
+    </section>
+
+    <!-- MODAL -->
+    <div class="modalBackdrop" id="modalBackdrop" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-title" id="modalTitle">—</div>
+        <div class="modal-body" id="modalBody"></div>
+        <div class="modal-actions">
+          <button class="btn primary" id="modalOk" type="button">Ок</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GAME OVER -->
+    <div class="overlay" id="overlay" hidden>
+      <div class="overlay-card">
+        <div class="overlay-title">GAME OVER</div>
+        <div class="overlay-sub" id="overlaySub">—</div>
+        <div class="overlay-actions">
+          <button class="btn primary" id="btnRestart" type="button">↻ Снова</button>
+          <button class="btn" id="btnToMenu" type="button">☰ В меню</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEW RECORD -->
+    <div class="toast" id="recordToast" hidden>
+      <div class="toast-title">NEW RECORD!</div>
+      <div class="toast-sub" id="recordToastSub">—</div>
+    </div>
+
+  </div>
+
+  <script defer src="game.js"></script>
+</body>
+</html>
