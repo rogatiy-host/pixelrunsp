@@ -340,3 +340,10 @@ canvas{
 @media (hover:none) and (pointer:coarse){
   .touchControls{display:flex;}
 }
+
+/* FIX: чтобы hidden реально скрывал оверлеи/модалки */
+.overlay[hidden],
+.modalBackdrop[hidden],
+.toast[hidden] {
+  display: none !important;
+}
